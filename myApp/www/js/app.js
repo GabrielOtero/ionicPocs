@@ -35,7 +35,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/recordAudio',
       views: {
         'menuContent': {
-          templateUrl: 'templates/recordAudio.html'
+          templateUrl: 'templates/recordAudio.html',
+          controller: 'RecordAudioCtrl'
         }
       }
     })

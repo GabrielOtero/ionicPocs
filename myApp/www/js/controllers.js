@@ -53,4 +53,22 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+})
+
+.controller('RecordAudioCtrl', function($scope, $stateParams) {
+    var captureError = function(e) {
+      console.log('captureError' ,e);
+    }
+
+    var captureSuccess = function(e) {
+        console.log('captureSuccess');console.dir(e);
+        $scope.sound.file = e[0].localURL;
+        $scope.sound.filePath = e[0].fullPath;
+    }
+
+    $scope.record = function() {
+        navigator.device.capture.captureAudio(
+            captureSuccess,captureError,{duration:10});
+    }
+})
+;

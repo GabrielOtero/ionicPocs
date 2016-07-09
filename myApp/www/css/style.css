@@ -2,3 +2,10 @@
 .red{
 	color: red;
 }
+.record{
+	background-color: #33CD5F;
+	margin: 10px;
+	padding: 10px;
+	border: none;
+	color: white;
+};
