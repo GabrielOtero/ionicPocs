@@ -9,3 +9,41 @@
 	border: none;
 	color: white;
 };
+
+ion-pane.has-header {
+    top: 44px !important;
+}
+
+.has-header2 {
+    top: 44px !important;
+}
+
+.header{
+	border: 1px black solid;
+	height: 50px;
+
+	position:absolute;
+	top:10px;
+	width:100%;
+}
+
+.middle{
+	border: 1px black solid;
+	width: 100%;
+	position: absolute;
+    height: 63%;
+    bottom: 22%;
+}
+
+.footer{
+	border: 1px black solid;
+	height: 50px;
+
+	position:absolute;
+	bottom:10px;
+	width:100%;
+}
+
+.footer-has-header{
+	margin-bottom: 44px;
+}
