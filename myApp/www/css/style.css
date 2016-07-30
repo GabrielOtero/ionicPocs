@@ -6,9 +6,17 @@
 	background-color: #33CD5F;
 	margin: 10px;
 	padding: 10px;
+	width: 250px;
 	border: none;
 	color: white;
-};
+}
+
+.center{
+	text-align: center;
+	display: inline-block;
+    margin-top: 100px;
+
+}
 
 ion-pane.has-header {
     top: 44px !important;

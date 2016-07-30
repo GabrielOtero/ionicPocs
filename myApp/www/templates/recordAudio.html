@@ -1,5 +1,8 @@
 <ion-view view-title="Record Audio">
   <ion-content>
-    <button ng-click="record()" class="record"><i class="fa fa-microphone" aria-hidden="true"></i> Record</button>
+	<div class="center">
+	    <button ng-click="record()" class="record"><i class="{{iconRecord}}" aria-hidden="true"></i> {{labelRecord}}</button>
+	    <button ng-click="play()" class="record"><i class="{{iconPlay}}" aria-hidden="true"></i> {{labelPlay}}</button>
+    </div>
   </ion-content>
 </ion-view>

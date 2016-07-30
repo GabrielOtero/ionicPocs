@@ -56,19 +56,78 @@ angular.module('starter.controllers', [])
 })
 
 .controller('RecordAudioCtrl', function($scope, $stateParams) {
-    var captureError = function(e) {
-      console.log('captureError' ,e);
+    $scope.labelRecord = "Record"
+    $scope.labelPlay = "Play"
+    $scope.iconRecord = "fa fa-microphone"
+    $scope.iconPlay = "fa fa-play"
+    var isRecording = false;
+    var isPlaying = false;
+
+    var my_media = null;
+
+
+    function playLayout(){
+      isPlaying = false;
+      $scope.labelPlay = "Play"
+      $scope.iconPlay = "fa fa-play"
     }
 
-    var captureSuccess = function(e) {
-        console.log('captureSuccess');console.dir(e);
-        $scope.sound.file = e[0].localURL;
-        $scope.sound.filePath = e[0].fullPath;
+    function pauseLayout(){
+      isPlaying = true;
+      $scope.labelPlay = "Pause"
+      $scope.iconPlay = "fa fa-pause"
     }
 
-    $scope.record = function() {
-        navigator.device.capture.captureAudio(
-            captureSuccess,captureError,{duration:10});
+    function record(){
+      var src = "myrecording.mp3";
+        my_media = new Media(src,
+            function() {
+                console.log("recordAudio():Audio Success");
+            },
+            function(err) {
+                console.log("recordAudio():Audio Error: "+ err.code);
+            }, 
+            function(status){
+                console.info(status);
+                if(status == 4){
+                  playLayout();
+                  $scope.$apply();
+                }
+            });
+        my_media.startRecord();
     }
+
+    function stopRecord(){
+      my_media.stopRecord();
+    }
+
+
+
+    $scope.record = function(){
+      if(!isRecording){
+        $scope.labelRecord = "Stop Recording";
+        $scope.iconRecord = "fa fa-microphone-slash";
+        isRecording = true;
+        record();
+      }else{
+        $scope.labelRecord = "Record"
+        $scope.iconRecord = "fa fa-microphone"
+        isRecording = false;
+        stopRecord();
+      }
+    }
+
+    $scope.play = function(){
+      if(!isPlaying){
+        pauseLayout();
+        my_media.play();
+      }else{
+        playLayout();
+        my_media.pause();
+      }
+    }
+
+
+
 })
 ;
